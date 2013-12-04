@@ -1,0 +1,4 @@
+horoscope.local
+===============
+
+horoscope
