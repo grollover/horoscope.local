@@ -40,7 +40,7 @@ try {
                     <p ng-show="sign">Вы выбрали: {{sign}}</p>
                 </div>
 
-                <div class="tables" ng-show="sign">
+                <div class="tables animate-show" ng-show="sign">
                     <h3>Стиль гороскопа:</h3>
                     <select ng-model="table" ng-options="v.label for (k, v) in tables"></select>
                     <p ng-show="table">Вы выбрали: {{table.label}}</p>
@@ -50,14 +50,15 @@ try {
                     <input type="button" value="Получить!" ng-click="getHoroscope()" />
                 </div>
             </div>
-            <div class="ajax_indicator_container">
-                <div id="ajax_indicator" style="display: none;"><img src="js/ajax_indicator.gif"></div>
+            <div class="ajax_indicator_container" ng-show="loading">
+                <div id="ajax_indicator"><img src="js/ajax_indicator.gif"></div>
             </div>
         </div>
         <div id="horoscope" ng-show="horoscope">
             <h3>Ваш гороскоп на сегодня:</h3>
-            <div id="horoscopeText">{{horoscope}}</div>
-            Сегодня: <?php echo date("d.m.Y"); ?>
+            <div id="horoscopeText">{{horoscope.text}}<br />
+                <p>Время вычисления гороскопа: {{horoscope.time}} с.</p>
+            </div>
         </div>
     </div>
 </div>

@@ -19,9 +19,15 @@ app.controller('horoCnt', ['$scope', '$http', function ($scope, $http) {
     }
 
     $scope.getHoroscope = function () {
+        $scope.loading = 1;
         $http.post('/ajax.php', "action=getHoroscope&tableName=" + $scope.table.name)
             .success(function (data) {
                 $scope.horoscope = data;
+                $scope.loading = 0;
+            })
+            .error(function(data, status){
+                $scope.horoscope = status;
+                $scope.loading = 0;
             });
     }
 

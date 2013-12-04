@@ -99,7 +99,7 @@ class Horoscope {
 
         $result .= '.';
 
-        echo $result;
+        return array('text' => $result, 'time' => $time_end - $time_start);
 
         echo '<br><br>';
         echo 'Время вычисления гороскопа: ' . ($time_end - $time_start) . 'с.';

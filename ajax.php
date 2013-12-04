@@ -10,8 +10,10 @@ catch (Exception $e) {
     exit($e->getMessage());
 }
 
-if(!empty($_POST['action']) && $_POST['action'] == "getHoroscope" && !empty($_POST['tableName']))
-    exit(json_encode(Horoscope::getHoroscope($_POST['tableName'], 50, 10)));
+if(!empty($_POST['action']) && $_POST['action'] == "getHoroscope" && !empty($_POST['tableName'])){
+    $horoscope = Horoscope::getHoroscope($_POST['tableName'], 50, 10);
+    exit(json_encode(array('text' => $horoscope['text'], 'time' => $horoscope['time'])));
+}
 
 
 if(!empty($_POST['action']) && $_POST['action']=="getTables"){
